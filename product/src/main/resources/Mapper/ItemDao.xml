@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chiuwah.product.dao.ItemDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.chiuwah.product.entity.ItemEntity" id="ItemMap">
+        <result property="ItemNum" column="商品编号"/>
+        <result property="Barcode" column="条形码"/>
+        <result property="ItemName" column="商品名称"/>
+        <result property="PinyinNum" column="拼音编号"/>
+        <result property="SpecificationModel" column="规格型号"/>
+        <result property="ShelfNum" column="货架号"/>
+        <result property="Category" column="类别"/>
+        <result property="OriginalPlace" column="产地"/>
+        <result property="Brand" column="品牌"/>
+        <result property="Introduction" column="商品简介"/>
+        <result property="ImgPath" column="图片路径"/>
+        <result property="Unit" column="单位"/>
+        <result property="RetailPrice" column="零售价"/>
+        <result property="RetailDiscount" column="零售折扣"/>
+        <result property="MinimumPrice" column="最低零售折扣"/>
+        <result property="WholesalePrice1" column="批发价1"/>
+        <result property="WholesalePrice2" column="批发价2"/>
+        <result property="WholesalePrice3" column="批发价3"/>
+        <result property="PurchasePrice" column="进货价"/>
+        <result property="LastPurchasePrice" column="最后进货价"/>
+        <result property="MemberPrice" column="会员价"/>
+        <result property="PurchaseUnitPrice" column="成本单价"/>
+        <result property="Number" column="数量"/>
+        <result property="NumInBox" column="商品箱装数量"/>
+        <result property="StockToNum" column="库存指向商品编号"/>
+        <result property="StockLowerLimit" column="库存下限"/>
+        <result property="StockUpperLimit" column="库存上限"/>
+        <result property="PromotItem" column="促销商品"/>
+        <result property="PromotPrice" column="促销价"/>
+        <result property="RebateItem" column="返点商品"/>
+        <result property="RebateRate" column="返点率"/>
+        <result property="PointsItem" column="积分商品"/>
+        <result property="PromotPrice" column="积分价"/>
+        <result property="RestrictedItem" column="限购商品"/>
+        <result property="RestrictNum" column="限购数量"/>
+        <result property="BestBefore" column="保质期"/>
+        <result property="BBDUnit" column="保质期单位"/>
+        <result property="ProductionDate" column="生产日期"/>
+        <result property="ExpiredDate" column="到期日期"/>
+        <result property="LastPurchaseDate" column="最后进货时间"/>
+        <result property="LastChangedTime" column="最后变更时间"/>
+        <result property="FirstCreatedTime" column="建档时间"/>
+        <result property="Using" column="使用"/>
+        <result property="Deleate" column="删除"/>
+        <result property="Stopped" column="停用"/>
+        <result property="SpecialOfferItem" column="特价商品"/>
+        <result property="LastSaleTime" column="最后销售时间"/>
+        <result property="TotalPurchaseNum" column="总销售数量"/>
+        <result property="TotalPurchaseNum" column="总进货数量"/>
+        <result property="OtherPros1" column="其它属性1"/>
+        <result property="OtherPros2" column="其它属性2"/>
+        <result property="ItemSaleForOther" column="代销商品"/>
+        <result property="ItemSaleForOtherRate" column="代销点数"/>
+        <result property="vat" column="vat"/>
+        <result property="Weight" column="单品重量"/>
+        <result property="WeightUnit" column="计重单位"/>
+        <result property="EnableWeight" column="秤重商品"/>
+        <result property="Notes" column="提示文字"/>
+        <result property="EnableSaleOnline" column="线上销售"/>
+        <result property="picfn1" column="picfn1"/>
+        <result property="picfn2" column="picfn2"/>
+        <result property="picfn3" column="picfn3"/>
+        <result property="picfn4" column="picfn4"/>
+        <result property="picfn5" column="picfn5"/>
+    </resultMap>
+
+    <select id="listAllItems" resultMap="ItemMap" resultType="com.chiuwah.product.entity.ItemEntity">
+        select * FROM 新商品信息
+    </select>
+
+    
+    
+    
+</mapper>
