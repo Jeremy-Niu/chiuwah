@@ -1,4 +1,4 @@
-package io.renren.utils;
+package io.renren.common.utils;
 
 /**
  * 自定义异常

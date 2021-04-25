@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: item_category
+          uri: https://www.baidu.com
+          PATH: /SDF
+          predicates:
+          - Query=url, baidu
+
+        - id: admin_home
+          uri: lb://renrenfast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}

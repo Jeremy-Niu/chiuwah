@@ -5,7 +5,7 @@ import io.renren.config.MongoCondition;
 import io.renren.config.MongoManager;
 import io.renren.entity.mongo.MongoDefinition;
 import io.renren.factory.MongoDBCollectionFactory;
-import io.renren.utils.MongoScanner;
+import io.renren.common.utils.MongoScanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Repository;

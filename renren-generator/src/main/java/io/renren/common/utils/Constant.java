@@ -1,4 +1,4 @@
-package io.renren.utils;
+package io.renren.common.utils;
 
 /**
  * 常量

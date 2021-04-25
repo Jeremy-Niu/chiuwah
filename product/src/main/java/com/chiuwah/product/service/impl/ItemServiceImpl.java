@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -33,8 +35,9 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, ItemEntity> implements
 
     @Override
     public List<ItemEntity> listAllItems() {
-
-        return itemDao.listAllItems();
+        List<ItemEntity> entities = itemDao.listAllItems();
+        return entities.stream().filter((itemEntity)->{ return itemEntity.getCategory().equals("111 FRESH FOODS 新鲜食品");})
+                .collect(Collectors.toUnmodifiableList());
     }
 
 }

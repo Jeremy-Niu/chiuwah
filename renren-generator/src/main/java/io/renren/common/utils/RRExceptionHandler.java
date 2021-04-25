@@ -1,4 +1,4 @@
-package io.renren.utils;
+package io.renren.common.utils;
 
 import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;

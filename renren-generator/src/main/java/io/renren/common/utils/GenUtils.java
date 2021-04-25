@@ -1,4 +1,4 @@
-package io.renren.utils;
+package io.renren.common.utils;
 
 import io.renren.config.MongoManager;
 import io.renren.entity.ColumnEntity;

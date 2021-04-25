@@ -4,8 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import com.chiuwah.product.entity.ItemEntity;
@@ -22,11 +23,19 @@ import io.renren.common.utils.R;
  * @email sunlightcs@gmail.com
  * @date 2021-04-07 16:13:23
  */
+
+@RefreshScope
 @RestController
 @RequestMapping("/product")
 public class ItemController {
     @Autowired
     private ItemService ItemService;
+    @Value("${idage}")
+    private String  idage;
+
+    public void setIdage(String idage) {
+        this.idage = idage;
+    }
 
     /**
      * 列表
@@ -38,6 +47,14 @@ public class ItemController {
 
         return R.ok().put("page", page);
     }
+
+    @RefreshScope
+    @RequestMapping("/test")
+    public String test(){
+        return "idage"+idage;
+    }
+
+
 
     @RequestMapping("/listall")
     public R ItemList(){

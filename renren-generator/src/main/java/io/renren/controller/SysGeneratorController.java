@@ -9,9 +9,9 @@
 package io.renren.controller;
 
 import io.renren.service.SysGeneratorService;
-import io.renren.utils.PageUtils;
-import io.renren.utils.Query;
-import io.renren.utils.R;
+import io.renren.common.utils.PageUtils;
+import io.renren.common.utils.Query;
+import io.renren.common.utils.R;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

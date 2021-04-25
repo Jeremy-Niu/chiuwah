@@ -75,7 +75,6 @@
         select * FROM 新商品信息
     </select>
 
-    
-    
-    
+
+
 </mapper>
