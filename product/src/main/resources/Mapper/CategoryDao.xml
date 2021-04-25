@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chiuwah.product.dao.CategoryDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.chiuwah.product.entity.CategoryEntity" id="CategoryMap">
+        <result property="Orders" column="顺序"/>
+        <result property="Category" column="类别"/>
+        <result property="Level" column="类别层次"/>
+        <result property="Modules" column="项目"/>
+    </resultMap>
+
+
+    <select id="listall"    resultMap="CategoryMap" resultType="com.chiuwah.product.entity.CategoryEntity">
+        select * from 类别
+    </select>
+    <select id="listType" resultType="com.chiuwah.product.entity.CategoryEntity" resultMap="CategoryMap">
+        select 类别 from 类别 C where C.项目 = '商品'
+    </select>
+
+
+</mapper>
