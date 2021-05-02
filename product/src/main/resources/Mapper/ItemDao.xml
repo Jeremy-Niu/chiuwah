@@ -74,7 +74,9 @@
     <select id="listAllItems" resultMap="ItemMap" resultType="com.chiuwah.product.entity.ItemEntity">
         select * FROM 新商品信息
     </select>
-
+    <select id="listItemsByType" parameterType="String" resultMap="ItemMap" resultType="com.chiuwah.product.entity.ItemEntity">
+        select 商品编号,商品名称,条形码 from 新商品信息 where 类别 = #{type}
+    </select>
 
 
 </mapper>

@@ -40,4 +40,14 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, ItemEntity> implements
                 .collect(Collectors.toUnmodifiableList());
     }
 
+    @Override
+    public List<ItemEntity> listItemsByType(String type) {
+//        List<ItemEntity> entities = itemDao.listAllItems();
+//        return entities.stream().filter((itemEntity)->{ return itemEntity.getCategory().equals(type);})
+//                .collect(Collectors.toUnmodifiableList());
+        List<ItemEntity> entities = itemDao.listItemsByType(type);
+        return entities;
+
+    }
+
 }

@@ -36,7 +36,7 @@ public class CategoryController {
 
     @RequestMapping("/type")
     public R listType(){
-        return R.ok().put("type",CategoryService.listType());
+        return R.ok().put("data",CategoryService.listType());
     }
 
 

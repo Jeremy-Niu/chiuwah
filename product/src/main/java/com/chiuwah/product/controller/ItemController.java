@@ -55,6 +55,12 @@ public class ItemController {
     }
 
 
+    @RequestMapping("/listbytype/{type}")
+    public R ItemListByType(@PathVariable("type")String type){
+        List<ItemEntity> entities = ItemService.listItemsByType( type);
+        return R.ok().put("data",entities);
+    }
+
 
     @RequestMapping("/listall")
     public R ItemList(){

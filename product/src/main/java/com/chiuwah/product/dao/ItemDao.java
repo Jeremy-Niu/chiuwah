@@ -17,5 +17,6 @@ import java.util.List;
 public interface ItemDao extends BaseMapper<ItemEntity> {
 
     public List<ItemEntity> listAllItems();
+    public List<ItemEntity> listItemsByType(String type);
 
 }

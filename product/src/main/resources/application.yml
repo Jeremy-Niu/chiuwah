@@ -15,6 +15,10 @@ spring:
       #            ?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
       username: user
       password: 123456
+#      url: jdbc:sqlserver://www.chiuwah.co.uk:1433;databaseName=csjxc_net_chen
+#      #            ?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#      username: root
+#      password: Chiuwah2021
       initial-size: 10
       max-active: 100
       min-idle: 10

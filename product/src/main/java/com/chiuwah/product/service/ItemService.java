@@ -18,5 +18,6 @@ public interface ItemService extends IService<ItemEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
     public List<ItemEntity> listAllItems();
+    List<ItemEntity> listItemsByType(String type);
 }
 
