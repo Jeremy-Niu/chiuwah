@@ -1,7 +1,9 @@
 package com.chiuwah.product.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import io.renren.common.utils.PageUtils;
+import com.chiuwah.common.utils.PageUtils;
 import com.chiuwah.product.entity.ItemEntity;
 
 import java.util.List;
@@ -18,6 +20,6 @@ public interface ItemService extends IService<ItemEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
     public List<ItemEntity> listAllItems();
-    List<ItemEntity> listItemsByType(String type);
+    IPage<ItemEntity> listItemsByType(Page<?> page, String type);
 }
 

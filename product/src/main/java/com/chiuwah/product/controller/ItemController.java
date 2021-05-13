@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.qiniu.sms.model.TemplateInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -11,9 +14,14 @@ import org.springframework.web.bind.annotation.*;
 
 import com.chiuwah.product.entity.ItemEntity;
 import com.chiuwah.product.service.ItemService;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.R;
+import com.chiuwah.common.utils.PageUtils;
+import com.chiuwah.common.utils.R;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -40,11 +48,10 @@ public class ItemController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     //@RequiresPermissions("generator:product:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = ItemService.queryPage(params);
-
+     PageUtils page = ItemService.queryPage(params);
         return R.ok().put("page", page);
     }
 
@@ -56,14 +63,17 @@ public class ItemController {
 
 
     @RequestMapping("/listbytype/{type}")
-    public R ItemListByType(@PathVariable("type")String type){
-        List<ItemEntity> entities = ItemService.listItemsByType( type);
-        return R.ok().put("data",entities);
+    public R ItemListByType(@PathVariable("type")String type,@RequestParam Integer page, @RequestParam Integer limit){
+        Page<ItemEntity> pages = new Page<>(page,limit);
+        IPage<ItemEntity> data = ItemService.listItemsByType(pages,type);
+        PageUtils results = new PageUtils(data);
+        return R.ok().put("page", results);
     }
 
 
     @RequestMapping("/listall")
     public R ItemList(){
+
 
         List<ItemEntity> entities = ItemService.listAllItems();
         return  R.ok().put("data",entities);

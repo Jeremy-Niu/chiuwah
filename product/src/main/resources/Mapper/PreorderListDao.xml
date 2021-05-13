@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chiuwah.product.dao.PreorderListDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.chiuwah.product.entity.PreorderListEntity" id="PreorderListMap">
+        <result property="id" column="id"/>
+        <result property="OrderNum" column="单据编号"/>
+        <result property="CustomerNum" column="客户编号"/>
+        <result property="CustomerSerialNum" column="客户流水号"/>
+        <result property="SerialNum" column="当日流水号"/>
+        <result property="TotalNum" column="合计数量"/>
+        <result property="TotalAmount" column="合计金额"/>
+        <result property="Paid" column="已收款"/>
+        <result property="DiscardPenny" column="去零"/>
+        <result property="Receivables" column="应收款"/>
+        <result property="ReceivablePeriod" column="收款期限"/>
+        <result property="Date" column="日期"/>
+        <result property="JobNum" column="工号"/>
+        <result property="InvoiceNote" column="单据备注"/>
+        <result property="StoreName" column="门店名称"/>
+        <result property="Return" column="退货"/>
+        <result property="Invalid" column="作废"/>
+        <result property="Sales" column="业务员"/>
+        <result property="PaidType" column="结算方式"/>
+        <result property="Repository" column="仓库"/>
+        <result property="TotalCostAmount" column="合计成本金额"/>
+        <result property="TotalRebateAmount" column="合计返点金额"/>
+        <result property="TotalGrossProfitAmount" column="合计毛利金额"/>
+        <result property="TotalGrossProfitRate" column="合计毛利率"/>
+        <result property="TypeofPrice" column="价格类型"/>
+        <result property="TerminalNum" column="机器编号"/>
+        <result property="TypeBusiness" column="业务类型"/>
+        <result property="CountTotalNum" column="统计用合计数量"/>
+        <result property="TotalItemSaleForOtherAmount" column="合计代销金额"/>
+        <result property="ContractName" column="联系人"/>
+        <result property="Telephone" column="电话"/>
+        <result property="PostCode" column="邮编"/>
+        <result property="Address" column="地址"/>
+        <result property="DeliveryTime" column="送货时间"/>
+        <result property="DeliveryDate" column="交货日期"/>
+        <result property="TotalTaxAmount" column="合计税额"/>
+        <result property="TotalTaxBeforeAmount" column="合计税前金额"/>
+        <result property="TotalWeight" column="合计重量"/>
+        <result property="TotalAmountWithTax" column="合计有税商品税前金额"/>
+        <result property="Association" column="关联"/>
+        <result property="Feature" column="特性"/>
+        <result property="DeliveryFee" column="配送费"/>
+        <result property="source" column="source"/>
+        <result property="state" column="state"/>
+        <result property="statePeople" column="state_people"/>
+        <result property="stateTime" column="state_time"/>
+        <result property="sendyg" column="sendyg"/>
+    </resultMap>
+
+
+</mapper>

@@ -1,5 +1,6 @@
 package com.chiuwah.product.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +11,8 @@ import java.util.stream.Collectors;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.Query;
+import com.chiuwah.common.utils.PageUtils;
+import com.chiuwah.common.utils.Query;
 
 import com.chiuwah.product.dao.ItemDao;
 import com.chiuwah.product.entity.ItemEntity;
@@ -41,11 +42,11 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, ItemEntity> implements
     }
 
     @Override
-    public List<ItemEntity> listItemsByType(String type) {
+    public IPage<ItemEntity> listItemsByType(Page<?> page,String type) {
 //        List<ItemEntity> entities = itemDao.listAllItems();
 //        return entities.stream().filter((itemEntity)->{ return itemEntity.getCategory().equals(type);})
 //                .collect(Collectors.toUnmodifiableList());
-        List<ItemEntity> entities = itemDao.listItemsByType(type);
+        IPage<ItemEntity> entities = itemDao.listItemsByType(page,type);
         return entities;
 
     }

@@ -1,5 +1,7 @@
 package com.chiuwah.product.dao;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.chiuwah.product.entity.ItemEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,6 +19,6 @@ import java.util.List;
 public interface ItemDao extends BaseMapper<ItemEntity> {
 
     public List<ItemEntity> listAllItems();
-    public List<ItemEntity> listItemsByType(String type);
+    public IPage<ItemEntity> listItemsByType(Page<?> page, String type);
 
 }
