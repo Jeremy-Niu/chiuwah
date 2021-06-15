@@ -3,10 +3,10 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         druid:
             driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-            url: jdbc:sqlserver://localhost:1433;databaseName=admin_demo
+            url: jdbc:sqlserver://www.chiuwah.co.uk:1433;databaseName=chiuwah-admin
 #            ?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-            username: user
-            password: 123456
+            username: root
+            password: Chiuwah2021
             initial-size: 10
             max-active: 100
             min-idle: 10

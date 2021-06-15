@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chiuwah.product.dao.CustomerDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.chiuwah.product.entity.CustomerEntity" id="CustomerMap">
+        <result property="customerName" column="客户"/>
+        <result property="customerNum" column="客户编号"/>
+        <result property="tel" column="电话"/>
+        <result property="phone" column="手机"/>
+        <result property="fax" column="传真"/>
+        <result property="email" column="email"/>
+        <result property="http" column="http"/>
+        <result property="qq" column="qq"/>
+        <result property="postcode" column="邮编"/>
+        <result property="address" column="地址"/>
+        <result property="bank1" column="开户行1"/>
+        <result property="account1" column="帐号1"/>
+        <result property="bank2" column="开户行2"/>
+        <result property="account2" column="帐号2"/>
+        <result property="bank3" column="开户行3"/>
+        <result property="account3" column="帐号3"/>
+        <result property="bank4" column="开户行4"/>
+        <result property="account4" column="帐号4"/>
+        <result property="taxNum" column="税号"/>
+        <result property="customerSerialNum" column="客户流水号"/>
+        <result property="used" column="使用"/>
+        <result property="overdraftTerm" column="欠款期限"/>
+        <result property="overdraftLimit" column="欠款上限"/>
+        <result property="category" column="类别"/>
+        <result property="payMethod" column="货款结算方式"/>
+        <result property="deliveryMethod" column="发货方式"/>
+        <result property="businessScope" column="经营范围"/>
+        <result property="creditLevel" column="信用等级"/>
+        <result property="totalAmount" column="总金额"/>
+        <result property="paidAmount" column="已收款"/>
+        <result property="prepaidAmount" column="已预收"/>
+        <result property="wiper" column="总去零"/>
+        <result property="priceType" column="单价取值"/>
+        <result property="usedPriceType" column="优先使用记忆的单价"/>
+        <result property="stopedUsing" column="停用"/>
+        <result property="notes" column="备注"/>
+        <result property="contract1" column="联系人1"/>
+        <result property="contacttitle1" column="联系人职务1"/>
+        <result property="tel1" column="联系人电话1"/>
+        <result property="phone1" column="联系人手机1"/>
+        <result property="qq1" column="联系人qq1"/>
+        <result property="email1" column="联系人email1"/>
+        <result property="contract2" column="联系人2"/>
+        <result property="contacttitle2" column="联系人职务2"/>
+        <result property="tel2" column="联系人电话2"/>
+        <result property="phone2" column="联系人手机2"/>
+        <result property="qq2" column="联系人qq2"/>
+        <result property="email2" column="联系人email2"/>
+        <result property="contract3" column="联系人3"/>
+        <result property="contacttitle3" column="联系人职务3"/>
+        <result property="tel3" column="联系人电话3"/>
+        <result property="phone3" column="联系人手机3"/>
+        <result property="qq3" column="联系人qq3"/>
+        <result property="email3" column="联系人email3"/>
+        <result property="deliveryTime" column="送货时间"/>
+        <result property="deliveryPlatform" column="出货站台"/>
+        <result property="feature" column="特性"/>
+        <result property="pwd" column="pwd"/>
+        <result property="businessName" column="门店名称"/>
+        <result property="source" column="source"/>
+        <result property="logintime" column="logintime"/>
+        <result property="buytime" column="buytime"/>
+        <result property="storename" column="storename"/>
+        <result property="grocery" column="grocery"/>
+        <result property="city" column="city"/>
+        <result property="country" column="country"/>
+    </resultMap>
+
+    <select id="listallcustomer" resultMap="CustomerMap" resultType="com.chiuwah.product.entity.CustomerEntity">
+        select * from 客户信息
+    </select>
+    <select id="listcustomers" resultMap="CustomerMap" resultType="com.chiuwah.product.entity.CustomerEntity">
+        select 客户, 客户编号 from 客户信息
+    </select>
+    <select id="getCustiomersById" parameterType="string" resultMap="CustomerMap" resultType="com.chiuwah.product.entity.CustomerEntity">
+        select 客户, 客户编号 from 客户信息 where 客户编号 like #{customerNum}
+    </select>
+
+
+</mapper>

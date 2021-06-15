@@ -19,7 +19,17 @@ import java.util.Map;
 public interface ItemService extends IService<ItemEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
     public List<ItemEntity> listAllItems();
+
     IPage<ItemEntity> listItemsByType(Page<?> page, String type);
+
+    IPage<ItemEntity> getItemById(Page<?> page, String ID);
+
+    IPage<ItemEntity> getItemByName(Page<?> page, String itemName);
+
+    IPage<ItemEntity> getItemByBarcode(Page<?> page, String itemBarcode);
+
+    IPage<ItemEntity> getItemByPinyin(Page<?> page, String itemPinyin);
 }
 

@@ -20,5 +20,9 @@ public interface ItemDao extends BaseMapper<ItemEntity> {
 
     public List<ItemEntity> listAllItems();
     public IPage<ItemEntity> listItemsByType(Page<?> page, String type);
+    public IPage<ItemEntity> getItemById(Page<?> page,String ID);
+    public IPage<ItemEntity> getItemByName(Page<?> page,String itemName);
+    public IPage<ItemEntity> getItemByBarcode(Page<?> page,String itemBarcode);
+    public IPage<ItemEntity> getItemByPinyin(Page<?> page,String itemPinyin);
 
 }

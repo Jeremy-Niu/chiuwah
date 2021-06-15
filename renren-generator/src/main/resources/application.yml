@@ -24,7 +24,7 @@ spring:
     #SQLServer配置
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
     url: jdbc:sqlserver://localhost:1433;DatabaseName=csjxc_net_chen
-    username: sa
+    username: user
     password: 123456
     #PostgreSQL配置
   #    driverClassName: org.postgresql.Driver

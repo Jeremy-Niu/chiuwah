@@ -89,12 +89,49 @@ public class ItemController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{ItemNum}")
+    @RequestMapping("/info/id/{ItemNum}")
     //@RequiresPermissions("generator:product:info")
-    public R info(@PathVariable("ItemNum") String ItemNum){
-		ItemEntity itemEntity = ItemService.getById(ItemNum);
+    public R info(@PathVariable("ItemNum") String ItemNum,@RequestParam Integer page, @RequestParam Integer limit){
+        Page<ItemEntity> pages = new Page<>(page,limit);
+        IPage<ItemEntity> data = ItemService.getItemById(pages,ItemNum);
+        PageUtils results = new PageUtils(data);
+        return R.ok().put("page", results);
+    }
 
-        return R.ok().put("新商品信息", itemEntity);
+    /**
+     * 搜索by商品名称
+     */
+    @RequestMapping("/info/name/{ItemName}")
+    //@RequiresPermissions("generator:product:info")
+    public R byName(@PathVariable("ItemName") String ItemName,@RequestParam Integer page, @RequestParam Integer limit){
+        Page<ItemEntity> pages = new Page<>(page,limit);
+        IPage<ItemEntity> data = ItemService.getItemByName(pages,ItemName);
+        PageUtils results = new PageUtils(data);
+        return R.ok().put("page", results);
+    }
+
+    /**
+     * 搜索by商品条形码
+     */
+    @RequestMapping("/info/barcode/{ItemBarcode}")
+    //@RequiresPermissions("generator:product:info")
+    public R byBarcode(@PathVariable("ItemBarcode") String ItemBarcode,@RequestParam Integer page, @RequestParam Integer limit){
+        Page<ItemEntity> pages = new Page<>(page,limit);
+        IPage<ItemEntity> data = ItemService.getItemByBarcode(pages,ItemBarcode);
+        PageUtils results = new PageUtils(data);
+        return R.ok().put("page", results);
+    }
+
+    /**
+     * 搜索by商品拼音
+     */
+    @RequestMapping("/info/pinyin/{ItemPinyin}")
+    //@RequiresPermissions("generator:product:info")
+    public R byPinyin(@PathVariable("ItemPinyin") String ItemPinyin,@RequestParam Integer page, @RequestParam Integer limit){
+        Page<ItemEntity> pages = new Page<>(page,limit);
+        IPage<ItemEntity> data = ItemService.getItemByPinyin(pages,ItemPinyin);
+        PageUtils results = new PageUtils(data);
+        return R.ok().put("page", results);
     }
 
     /**

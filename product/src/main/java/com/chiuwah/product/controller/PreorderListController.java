@@ -1,19 +1,25 @@
 package com.chiuwah.product.controller;
 
-import java.util.Arrays;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
+import cn.hutool.db.PageResult;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.chiuwah.common.utils.PageUtils;
 import com.chiuwah.product.entity.PreorderListEntity;
 import com.chiuwah.product.service.PreorderListService;
+import io.swagger.models.auth.In;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.R;
+import com.chiuwah.common.utils.R;
 
 
 
@@ -24,26 +30,37 @@ import io.renren.common.utils.R;
  * @email leiniu54@gmail.com
  * @date 2021-05-13 17:04:43
  */
+@RefreshScope
 @RestController
-@RequestMapping("order/general")
+@RequestMapping("preorder/general")
 public class PreorderListController {
     @Autowired
     private PreorderListService listService;
 
     /**
+     * test for api
+     */
+    @RequestMapping("/listall")
+//    @RequiresPermissions("generator:批发待审核单总表:list")
+    public R list(@RequestParam Map<String, Object> params){
+        List<PreorderListEntity> entityList = listService.listAllPreoders();
+        return R.ok().put("data",entityList);
+    }
+
+    /**
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("generator:批发待审核单总表:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = listService.queryPage(params);
-
-        return R.ok().put("page", page);
+//    @RequiresPermissions("generator:批发待审核单总表:list")
+    public R list(@RequestParam Integer page, @RequestParam Integer limit){
+        Page<PreorderListEntity>  pages = new Page<>(page,limit);
+        IPage<PreorderListEntity>  data = listService.listPreorders(pages);
+        PageUtils results = new PageUtils(data);
+        return R.ok().put("page",results);
     }
 
-
     /**
-     * 信息
+     * search by id
      */
     @RequestMapping("/info/{id}")
     @RequiresPermissions("generator:批发待审核单总表:info")
@@ -52,6 +69,22 @@ public class PreorderListController {
 
         return R.ok().put("批发待审核单总表", listEntity);
     }
+
+    /**
+     * search by date
+     */
+    @RequestMapping("/info/date")
+//    @RequiresPermissions("generator:批发待审核单总表:info")
+    public R infobydate(@RequestParam Integer page, @RequestParam Integer limit, @RequestParam String date1, @RequestParam String date2 ) throws ParseException {
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+//        Date tempDate = simpleDateFormat.parse(date2);
+//        String endDate = simpleDateFormat.format(new Date(tempDate.getTime()+ 1 * 24 * 60 * 60 * 1000));
+        Page<PreorderListEntity> pages = new Page<>(page,limit);
+        IPage<PreorderListEntity> data = listService.getListByDate(pages,date1,date2);
+        PageUtils results = new PageUtils(data);
+        return R.ok().put("page", results);
+    }
+
 
     /**
      * 保存

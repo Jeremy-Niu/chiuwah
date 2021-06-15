@@ -1,8 +1,13 @@
 package com.chiuwah.product.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.chiuwah.product.entity.PreorderListEntity;
 import io.renren.common.utils.PageUtils;
+
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,5 +20,8 @@ import java.util.Map;
 public interface PreorderListService extends IService<PreorderListEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+    List<PreorderListEntity> listAllPreoders();
+    IPage<PreorderListEntity> listPreorders(Page<?> page);
+    IPage<PreorderListEntity> getListByDate(Page<?> page,String date1,String date2);
 }
 

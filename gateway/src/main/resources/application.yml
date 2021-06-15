@@ -1,18 +1,37 @@
 spring:
   cloud:
     gateway:
+      httpclient:
+        ssl:
+          handshake-timeout: 10000
+          close-notify-flush-timeout: 3000ms
+          close-notify-read-timeout: 0
+          use-insecure-trust-manager: true
+        #        connect-timeout: 1000
+#        response-timeout: 5s
 #      globalcors:
 #        cors-configurations:
 #          '[/**]':
-#            allowedOrigins: "http://localhost:8001"
+#            allowedOrigins: "*"
 #            allowedMethods:
-#              - GET POST
-      routes:
-        - id: item_category
-          uri: https://www.baidu.com
-          predicates:
-            - Query=green
+#              - GET
+#              - POST
 
+        add-to-simple-url-handler-mapping: true
+
+      routes:
+#        - id: item_category
+#          uri: https://www.qq.com
+#          oreder: -1
+#          predicates:
+#            - Query=url, green
+        - id: preorder_route
+          uri: lb://product
+          order: 0
+          predicates:
+            - Path=/api/preorder/**
+          filters:
+            - RewritePath=/api/preorder/?(?<segment>.*),/preorder/$\{segment}
         - id: category_route
           uri: lb://product
           order: 0
@@ -20,7 +39,6 @@ spring:
             - Path=/api/category/**
           filters:
             - RewritePath=/api/category/?(?<segment>.*),/category/$\{segment}
-
         - id: product_route
           uri: lb://product
           order: 1
@@ -28,13 +46,19 @@ spring:
             - Path=/api/product/**
           filters:
             - RewritePath=/api/product/?(?<segment>.*),/product/$\{segment}
-
-
         - id: admin_home
           uri: lb://renren-fast
           order: 2
           predicates:
             - Path=/api/**
           filters:
-            - RewritePath=/api/?(?<segment>.*),/renren-fast/$\{segment}
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+#server:
+#  ssl:
+#    key-store: classpath:chiuwah.pfx
+#    key-store-type: PKCS12
+#    enabled: true
+#    key-store-password: 123456
+#    enabled-protocols: https
+
 
