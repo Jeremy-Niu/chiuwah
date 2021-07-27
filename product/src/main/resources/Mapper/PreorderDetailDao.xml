@@ -6,28 +6,28 @@
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.chiuwah.product.entity.PreorderDetailEntity" id="PreorderDetailMap">
         <result property="id" column="id"/>
-        <result property="OrderNum" column="单据编号"/>
-        <result property="ItemNum" column="商品编号"/>
-        <result property="TotalNum" column="数量"/>
-        <result property="Price" column="单价"/>
-        <result property="Discount" column="折扣"/>
-        <result property="PriceafterDiscout" column="折后单价"/>
-        <result property="TotalPrice" column="金额"/>
-        <result property="Note" column="备注"/>
-        <result property="CostPrice" column="成本单价"/>
-        <result property="CostTotal" column="成本金额"/>
-        <result property="RebateRate" column="返点率"/>
-        <result property="RebateAmount" column="返点金额"/>
-        <result property="GrossProfitAmount" column="毛利金额"/>
-        <result property="GrossProfitRate" column="毛利率"/>
-        <result property="CountNum" column="统计用数量"/>
-        <result property="SerialNum" column="序列号"/>
-        <result property="ItemSaleForOtherRate" column="代销点数"/>
-        <result property="ItemSaleForOtherAmount" column="代销金额"/>
-        <result property="TaxRate" column="税率"/>
-        <result property="TaxAmount" column="税额"/>
-        <result property="BeforTaxAmount" column="税前金额"/>
-        <result property="TotalWeight" column="重量小计"/>
+        <result property="orderNum" column="单据编号"/>
+        <result property="itemNum" column="商品编号"/>
+        <result property="totalNum" column="数量"/>
+        <result property="price" column="单价"/>
+        <result property="discount" column="折扣"/>
+        <result property="priceafterDiscout" column="折后单价"/>
+        <result property="totalPrice" column="金额"/>
+        <result property="note" column="备注"/>
+        <result property="costPrice" column="成本单价"/>
+        <result property="costTotal" column="成本金额"/>
+        <result property="rebateRate" column="返点率"/>
+        <result property="rebateAmount" column="返点金额"/>
+        <result property="grossProfitAmount" column="毛利金额"/>
+        <result property="grossProfitRate" column="毛利率"/>
+        <result property="countNum" column="统计用数量"/>
+        <result property="serialNum" column="序列号"/>
+        <result property="itemSaleForOtherRate" column="代销点数"/>
+        <result property="itemSaleForOtherAmount" column="代销金额"/>
+        <result property="taxRate" column="税率"/>
+        <result property="taxAmount" column="税额"/>
+        <result property="beforTaxAmount" column="税前金额"/>
+        <result property="totalWeight" column="重量小计"/>
     </resultMap>
 
 

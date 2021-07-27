@@ -59,6 +59,15 @@ public class PreorderListController {
         return R.ok().put("page",results);
     }
 
+    @RequestMapping("/listwithname")
+    public R listWithName(){
+        IPage<PreorderListEntity> data = listService.getListWithCustomerName();
+        PageUtils results = new PageUtils( data);
+        return R.ok().put("page",results);
+    }
+
+
+
     /**
      * search by id
      */

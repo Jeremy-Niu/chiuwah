@@ -23,5 +23,6 @@ public interface PreorderListService extends IService<PreorderListEntity> {
     List<PreorderListEntity> listAllPreoders();
     IPage<PreorderListEntity> listPreorders(Page<?> page);
     IPage<PreorderListEntity> getListByDate(Page<?> page,String date1,String date2);
+    IPage<PreorderListEntity> getListWithCustomerName();
 }
 

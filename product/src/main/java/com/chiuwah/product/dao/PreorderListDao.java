@@ -23,4 +23,5 @@ public interface PreorderListDao extends BaseMapper<PreorderListEntity> {
     public List<PreorderListEntity> listAllPreorders();
     public IPage<PreorderListEntity> listPreOrders(Page<?> page);
     public IPage<PreorderListEntity> listPreOrdersByDate(Page<?> pang, String date1,String date2);
+    public IPage<PreorderListEntity> listPreOrdersWithName();
 }

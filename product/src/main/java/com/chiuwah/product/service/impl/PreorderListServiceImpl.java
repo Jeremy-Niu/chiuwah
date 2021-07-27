@@ -51,4 +51,10 @@ public class PreorderListServiceImpl extends ServiceImpl<PreorderListDao, Preord
         return entities;
     }
 
+    @Override
+    public IPage<PreorderListEntity> getListWithCustomerName() {
+        IPage<PreorderListEntity> entities = preorderListDao.listPreOrdersWithName();
+        return entities;
+    }
+
 }

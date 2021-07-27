@@ -4,6 +4,9 @@
 <mapper namespace="com.chiuwah.product.dao.PreorderListDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap id="customer" type="com.chiuwah.product.entity.CustomerEntity">
+        <result property="customerName" column="客户"/>
+    </resultMap>
     <resultMap type="com.chiuwah.product.entity.PreorderListEntity" id="PreorderListMap">
         <result property="id" column="id"/>
         <result property="orderNum" column="单据编号"/>
@@ -53,11 +56,77 @@
         <result property="stateTime" column="state_time"/>
         <result property="sendyg" column="sendyg"/>
     </resultMap>
+
+    <resultMap type="com.chiuwah.product.entity.PreorderListEntity" id="PreorderListMapWithName">
+        <result property="id" column="id"/>
+        <result property="orderNum" column="单据编号"/>
+        <result property="customerNum" column="客户编号"/>
+        <result property="customerSerialNum" column="客户流水号"/>
+        <result property="serialNum" column="当日流水号"/>
+        <result property="totalNum" column="合计数量"/>
+        <result property="totalAmount" column="合计金额"/>
+        <result property="paid" column="已收款"/>
+        <result property="discardPenny" column="去零"/>
+        <result property="receivables" column="应收款"/>
+        <result property="receivablePeriod" column="收款期限"/>
+        <result property="date" column="日期"/>
+        <result property="jobNum" column="工号"/>
+        <result property="invoiceNote" column="单据备注"/>
+        <result property="storeName" column="门店名称"/>
+        <result property="return" column="退货"/>
+        <result property="invalid" column="作废"/>
+        <result property="sales" column="业务员"/>
+        <result property="paidType" column="结算方式"/>
+        <result property="repository" column="仓库"/>
+        <result property="totalCostAmount" column="合计成本金额"/>
+        <result property="totalRebateAmount" column="合计返点金额"/>
+        <result property="totalGrossProfitAmount" column="合计毛利金额"/>
+        <result property="totalGrossProfitRate" column="合计毛利率"/>
+        <result property="typeofPrice" column="价格类型"/>
+        <result property="terminalNum" column="机器编号"/>
+        <result property="typeBusiness" column="业务类型"/>
+        <result property="countTotalNum" column="统计用合计数量"/>
+        <result property="totalItemSaleForOtherAmount" column="合计代销金额"/>
+        <result property="contractName" column="联系人"/>
+        <result property="telephone" column="电话"/>
+        <result property="postCode" column="邮编"/>
+        <result property="address" column="地址"/>
+        <result property="deliveryTime" column="送货时间"/>
+        <result property="deliveryDate" column="交货日期"/>
+        <result property="totalTaxAmount" column="合计税额"/>
+        <result property="totalTaxBeforeAmount" column="合计税前金额"/>
+        <result property="totalWeight" column="合计重量"/>
+        <result property="totalAmountWithTax" column="合计有税商品税前金额"/>
+        <result property="association" column="关联"/>
+        <result property="feature" column="特性"/>
+        <result property="deliveryFee" column="配送费"/>
+        <result property="source" column="source"/>
+        <result property="state" column="state"/>
+        <result property="statePeople" column="state_people"/>
+        <result property="stateTime" column="state_time"/>
+        <result property="sendyg" column="sendyg"/>
+<!--        <collection property="customerN" ofType="com.chiuwah.product.entity.CustomerEntity">-->
+<!--            <id property="customerNum" column="客户编号"/>-->
+<!--            <result property="customerName" column="客户"/>-->
+<!--        </collection>-->
+        <association property="customer" javaType="com.chiuwah.product.entity.CustomerEntity">
+            <result property="customerName" column="客户"/>
+        </association>
+    </resultMap>
     <select id="listAllPreorders" resultMap="com.chiuwah.product.dao.PreorderListDao.PreorderListMap" resultType="com.chiuwah.product.entity.PreorderListEntity">
         select * from 批发待审核单总表
     </select>
-    <select id="listPreOrders" parameterType="date" resultMap="com.chiuwah.product.dao.PreorderListDao.PreorderListMap" resultType="com.chiuwah.product.entity.PreorderListEntity">
-        select 单据编号, 业务类型, 客户编号, 日期, 邮编, source, state_time, 合计数量, 合计金额, 合计税额, 合计税前金额, 合计重量, 应收款, 合计有税商品税前金额, 工号 from 批发待审核单总表
+    <select id="listPreOrders"  resultMap="com.chiuwah.product.dao.PreorderListDao.PreorderListMapWithName" >
+        select b.单据编号, b.业务类型, customer.客户, b.客户编号, b.日期, b.邮编, b.source, b.state_time, b.合计数量, b.合计金额, b.合计税额, b.合计税前金额, b.合计重量, b.应收款, b.合计有税商品税前金额, b.工号
+        from 批发待审核单总表 b, 客户信息 customer
+        where b.客户编号 = customer.客户编号
+
+    </select>
+    <select id="listPreOrdersWithName" resultMap="com.chiuwah.product.dao.PreorderListDao.PreorderListMapWithName"  >
+        select b.单据编号, b.业务类型, customer.客户, b.客户编号, b.日期, b.邮编, b.source, b.state_time, b.合计数量, b.合计金额, b.合计税额, b.合计税前金额, b.合计重量, b.应收款, b.合计有税商品税前金额, b.工号
+        from 批发待审核单总表 b, 客户信息 customer
+        where b.客户编号 = customer.客户编号
+
     </select>
     <select id="listPreOrdersByDate"  resultMap="com.chiuwah.product.dao.PreorderListDao.PreorderListMap"
             resultType="com.chiuwah.product.entity.PreorderListEntity">

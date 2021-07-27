@@ -29,9 +29,16 @@ spring:
           uri: lb://product
           order: 0
           predicates:
-            - Path=/api/preorder/**
+            - Path=/api/preorder/general/**
           filters:
-            - RewritePath=/api/preorder/?(?<segment>.*),/preorder/$\{segment}
+            - RewritePath=/api/preorder/general/?(?<segment>.*),/preorder/general/$\{segment}
+        - id: preorder_route
+          uri: lb://product
+          order: 0
+          predicates:
+            - Path=/api/preorder/detail/**
+          filters:
+            - RewritePath=/api/preorder/detail/?(?<segment>.*),/preorder/detail/$\{segment}
         - id: category_route
           uri: lb://product
           order: 0

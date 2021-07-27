@@ -210,4 +210,6 @@ public class PreorderListEntity implements Serializable {
 	 */
 	private String sendyg;
 
+	private CustomerEntity customer;
+
 }
